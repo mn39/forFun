@@ -3,8 +3,8 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 from flask_cors import CORS
-from bson import json_util
-import json 
+
+from flask import jsonify
 load_dotenv()
 
 
@@ -12,8 +12,6 @@ app = Flask(__name__, static_folder='../frontend/build', static_url_path='')
 
 CORS(app)
 
-def parse_json(data):
-    return json.loads(json_util.dumps(data))
 
 # MongoDB 연결
 client = MongoClient(os.environ.get('MONGODB_URI'))
@@ -24,7 +22,8 @@ collection = db['MN']
 @app.route('/api/data')
 def get_data():
     data = collection.find_one()
-    return parse_json(data)
+    data['_id'] = str(data['_id'])
+    return jsonify(data)
 
 # 프론트엔드 정적 파일 서빙
 @app.route('/', defaults={'path': ''})
