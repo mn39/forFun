@@ -1,0 +1,16 @@
+{
+  "name": "forFun",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "start:frontend": "yarn workspace frontend start",
+    "build:frontend": "yarn workspace frontend build",
+    "start:backend": "cd backend && flask run",
+    "heroku-postbuild": "yarn build:frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
