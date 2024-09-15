@@ -20,7 +20,7 @@ collection = db['MN']
 @app.route('/api/data')
 def get_data():
     data = collection.find_one()
-    return json.stringify(data)
+    return data
 
 # 프론트엔드 정적 파일 서빙
 @app.route('/', defaults={'path': ''})
