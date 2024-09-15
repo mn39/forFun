@@ -5,7 +5,7 @@
     "frontend"
   ],
   "scripts": {
-    "start": "concurrently \"yarn start:frontend\" \"yarn start:backend\"",
+    "start": "yarn install:all && concurrently \"yarn start:frontend\" \"yarn start:backend\"",
     "start:frontend": "yarn workspace frontend start",
     "start:backend": "cd backend && flask run",
     "build": "yarn workspace frontend build",
