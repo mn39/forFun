@@ -5,9 +5,8 @@ import os
 
 load_dotenv()
 
-# 나머지 코드는 이전과 동일import os
 
-app = Flask(__name__, static_folder='frontend/build')
+app = Flask(__name__, static_folder='../frontend/build', static_url_path='')
 
 # MongoDB 연결
 client = MongoClient(os.environ.get('MONGODB_URI'))
