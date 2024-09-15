@@ -1,16 +1,19 @@
 {
-  "name": "forFun",
+  "name": "my-monorepo",
   "private": true,
   "workspaces": [
     "frontend"
   ],
   "scripts": {
+    "start": "concurrently \"yarn start:frontend\" \"yarn start:backend\"",
     "start:frontend": "yarn workspace frontend start",
-    "build:frontend": "yarn workspace frontend build",
     "start:backend": "cd backend && flask run",
-    "heroku-postbuild": "yarn build:frontend"
+    "build": "yarn workspace frontend build",
+    "heroku-postbuild": "yarn build",
+    "deploy": "git push heroku master",
+    "install:all": "yarn install && cd backend && pip install -r requirements.txt"
   },
   "devDependencies": {
-    "concurrently": "^9.0.1"
+    "concurrently": "^7.0.0"
   }
 }
