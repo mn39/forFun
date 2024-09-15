@@ -11,7 +11,7 @@
     "build": "yarn workspace frontend build",
     "heroku-postbuild": "yarn build",
     "deploy": "git push heroku master",
-    "install:all": "yarn install && cd backend && pip install -r requirements.txt"
+    "install:all": "yarn install && pip install -r requirements.txt"
   },
   "devDependencies": {
     "concurrently": "^7.0.0"
